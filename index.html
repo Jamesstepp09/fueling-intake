@@ -319,7 +319,7 @@ function P(k,lbl,opts,multi=false,required=false){
   return `<div class="q"><span class="q-label">${l}</span>
     <div class="pills">${opts.map(o=>{
       const on=multi?(Array.isArray(D[k])&&D[k].includes(o)):D[k]===o;
-      const fn=multi?`tog('${k}','${o}')`:`s('${k}','${o}')`;
+      const fn=multi?`tog('${k}','${o.replace(/'/g, "\\'")}')`:`s('${k}','${o.replace(/'/g, "\\'")}')`;
       return `<button class="pill${on?' on':''}" onclick="${fn}">${o}</button>`;
     }).join('')}</div></div>`;
 }
